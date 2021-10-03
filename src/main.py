@@ -87,7 +87,7 @@ print(logo)
 print("Welcom to the guessing game!")
 print("I'm thinkning of a number between 1 and 100")
 secret_number = random.randint(1, 100)
-print(f"The secret number is {secret_number}")
+#print(f"The secret number is {secret_number}")
 
 def game():
 
@@ -98,7 +98,7 @@ def game():
 
 
     if difficulty_level == 'easy':
-        attempts_number = 9
+        attempts_number = 10
         print("You have 10 attempts")
     elif difficulty_level == 'hard':
         attempts_number = 4
@@ -108,29 +108,29 @@ def game():
     is_guessed = False
 
     def calc(attempts_number):
-        #attempts_number -= 1
         print(f"inside attempts number {attempts_number}")
         return attempts_number - 1
 
 
-    print(f"outside attempts number {attempts_number}")
+    #print(f"outside attempts number {attempts_number}")
 
     while not is_guessed:
         user_guess = int(input("Make a guess: "))
         if user_guess == secret_number:
             print(f"You guessed the {secret_number} as a secret number")
             is_guessed = True
-        elif user_guess < secret_number and attempts_number != 0:
+        elif user_guess < secret_number and attempts_number > 0:
             print("Your guess is too low")
             attempts_number = calc(attempts_number)
-        elif user_guess > secret_number and attempts_number != 0:
+        elif user_guess > secret_number and attempts_number > 0:
             print("Your guess is too high")
             attempts_number = calc(attempts_number)
         else:
             print("You lost")
-            is_guessed = True
+            return
 
 game()
+print(f"The secret number was {secret_number}")
 
 
 
